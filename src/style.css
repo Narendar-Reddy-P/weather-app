@@ -69,18 +69,22 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0.4rem;
+    /* padding: 0.4rem; */
     border-radius: 0.3rem;
     gap: 0.5rem;
+    padding-left: 0.7rem;
   }
 
   #searchInput {
     border: none;
     color: var(--neutral-300);
     background-color: var(--neutral-800);
-    margin-right: auto;
+    width:100%;
+    height:2rem;
   }
-
+  #searchInput:focus{
+    outline:none; 
+  }
   #searchButton {
     color: var(--neutral-200);
     padding: 0.4rem;
@@ -225,5 +229,204 @@ h1 {
   }
 }
 
-@media (min-width: 500px) {
+
+
+@media (min-width: 500px ) and (max-width:1000px) {
+  body {
+    padding: 0.4rem;
+    display: grid;
+    grid-template-columns: repeat(3,clamp(10rem,34%,1000px));
+    grid-template-rows: repeat(4,min(30rem,));
+  }
+  #searchMenu{
+    grid-area:1/1/2/4;
+  }
+  #header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #units {
+    display: flex;
+    background-color: var(--neutral-800);
+    gap: 0.4rem;
+    padding: 0.4rem;
+    border-radius: 0.2rem;
+  }
+  img[class="toolIcons"] {
+    width: 16px;
+  }
+  form {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+  #search {
+    background-color: var(--neutral-800);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.3rem;
+    gap: 0.5rem;
+    padding-left: 0.7rem;
+  }
+
+  #searchInput {
+    border: none;
+    color: var(--neutral-300);
+    background-color: var(--neutral-800);
+    width:35vw;
+    height:2rem;
+  }
+  #searchInput:focus{
+    outline:none; 
+  }
+  #searchButton {
+    color: var(--neutral-200);
+    padding: 0.4rem;
+    border-radius: 0.3rem;
+    gap: 0.5rem;
+    background-color: var(--blue-500);
+    width:15vw;
+  }
+
+  #placeMenu {
+    grid-area:2/1/3/4;
+    display: flex;
+    margin-top: 1rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    padding:0 4rem;
+  }
+
+  #placeName {
+    font-size: 1.5rem;
+  }
+  #tempDisplay {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #dateDay {
+    color: var(--neutral-200);
+  }
+  #temperature {
+    font-size: 3rem;
+    font-style: italic;
+  }
+
+  .statsObject {
+    background-color: var(--neutral-800);
+  }
+  #placeMenu {
+    height: 10rem;
+    background-image: url(../assets/images/bg-today-large.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+  }
+  #tempIcon {
+    height: 5rem;
+  }
+  #statsMenu {
+    grid-area:3/1/4/3;
+    margin-top: 0.7rem;
+    margin-bottom: 0.7rem;
+    display: grid;
+    height: 12rem;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+  .statsObject {
+    padding: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.3rem;
+    border: 1px solid var(--neutral-600);
+    gap: 0.5rem;
+  }
+  .cardTitle {
+    font-size: 0.8rem;
+  }
+  .statsValue {
+    font-size: 1.5rem;
+  }
+  .weekIcon {
+    width: 4rem;
+  }
+  #weekMenu{
+    grid-area:4/1/5/3;
+  }
+  #dailyforcast {
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    gap: 0.7rem;
+    margin: 0.7rem 0;
+    height: 24rem;
+  }
+  .dailyCard {
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--neutral-800);
+    border-radius: 0.5rem;
+    border: 1px solid var(--neutral-600);
+  }
+  .dailyTemp {
+    display: flex;
+    gap: 1.5rem;
+  }
+  #hoursMenu {
+    grid-area:3/3/5/4;
+    background-color: var(--neutral-800);
+    display: flex;
+    flex-direction: column;
+    padding: 0.7rem;
+    border-radius: 1rem;
+  }
+  #hoursHeader {
+    display: flex;
+    justify-content: space-between;
+  }
+  #hourtitle {
+    padding: 0.7rem;
+    gap: 0.7rem;
+  }
+  #DayD {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--neutral-600);
+    padding: 0.4rem 0.9rem;
+    gap: 0.7rem;
+    border-radius: 0.7rem;
+  }
+  #dayDropdown {
+    width: 0.7rem;
+  }
+  #hourContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 0.7rem;
+  }
+  .hour {
+    display: flex;
+    align-items: center;
+    background-color: var(--neutral-700);
+    gap: 0.7rem;
+    padding: 0.7rem;
+    border-radius: 0.7rem;
+    border: 1px solid var(--neutral-600);
+  }
+  .hourIcon {
+    height: 1.6rem;
+  }
+  .time {
+    margin-right: auto;
+  }
 }
