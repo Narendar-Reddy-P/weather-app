@@ -15,113 +15,223 @@
   --blue-500: hsl(233, 67%, 56%);
   --blue-700: hsl(248, 70%, 36%);
 
-  /*font-size*/
   font-size: 18px;
   color: var(--neutral-0);
 }
 
 @font-face {
   font-family: "DM";
-  src: url("../assets/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf")
+  src: url("../assets/fonts/DM_Sans/DMSans-VariableFont_opsz,wght.ttf")
     format("truetype-variations");
   font-weight: 300 700;
 }
 @font-face {
   font-family: "BG";
-  src: url("../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz\,wdth\,wght.ttf")
+  src: url("../assets/fonts/Bricolage_Grotesque/BricolageGrotesque-VariableFont_opsz,wdth,wght.ttf")
     format("truetype-variations");
   font-weight: 700;
 }
+
 body {
   background-color: var(--neutral-900);
   font-family: DM;
 }
+
 h1 {
   text-align: center;
 }
 
-@media (max-width: 540px) {
+img[class="toolIcons"] {
+  width: 16px;
+}
+
+form {
+  display: flex;
+}
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#units {
+  display: flex;
+  background-color: var(--neutral-800);
+  gap: 0.4rem;
+  padding: 0.4rem;
+  border-radius: 0.2rem;
+}
+
+#search {
+  background-color: var(--neutral-800);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.3rem;
+  gap: 0.5rem;
+  padding-left: 0.7rem;
+}
+
+#searchInput {
+  border: none;
+  color: var(--neutral-300);
+  background-color: var(--neutral-800);
+}
+
+#searchInput:focus {
+  outline: none;
+}
+
+#searchButton {
+  color: var(--neutral-200);
+  padding: 0.4rem;
+  border-radius: 0.3rem;
+  gap: 0.5rem;
+  background-color: var(--blue-500);
+}
+
+#placeMenu {
+  display: flex;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  justify-content: center;
+  align-items: center;
+}
+
+#placeName {
+  font-size: 1.5rem;
+}
+
+#tempDisplay {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#dateDay {
+  color: var(--neutral-200);
+}
+
+#temperature {
+  font-size: 3rem;
+  font-style: italic;
+}
+
+.statsObject {
+  background-color: var(--neutral-800);
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.3rem;
+  border: 1px solid var(--neutral-600);
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  font-size: 0.8rem;
+}
+
+.statsValue {
+  font-size: 1.5rem;
+}
+
+.weekIcon {
+  width: 3rem;
+}
+
+.dailyCard {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--neutral-800);
+  border-radius: 0.5rem;
+  border: 1px solid var(--neutral-600);
+}
+
+.dailyTemp {
+  display: flex;
+  gap: 1.5rem;
+}
+
+#hoursMenu {
+  background-color: var(--neutral-800);
+  display: flex;
+  flex-direction: column;
+  padding: 0.7rem;
+  border-radius: 1rem;
+}
+
+#hoursHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+#hourtitle {
+  padding: 0.7rem;
+  gap: 0.7rem;
+}
+
+#DayD {
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--neutral-600);
+  padding: 0.4rem 0.9rem;
+  gap: 0.7rem;
+  border-radius: 0.7rem;
+}
+
+#dayDropdown {
+  width: 0.7rem;
+}
+
+#hourContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 0.7rem;
+}
+
+.hour {
+  display: flex;
+  align-items: center;
+  background-color: var(--neutral-700);
+  gap: 0.7rem;
+  padding: 0.7rem;
+  border-radius: 0.7rem;
+  border: 1px solid var(--neutral-600);
+}
+
+.hourIcon {
+  height: 1.6rem;
+}
+
+.time {
+  margin-right: auto;
+}
+
+/* mobile */
+@media (max-width: 500px) {
   body {
     padding: 0.4rem;
   }
-  #header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #units {
-    display: flex;
-    background-color: var(--neutral-800);
-    gap: 0.4rem;
-    padding: 0.4rem;
-    border-radius: 0.2rem;
-  }
-  img[class="toolIcons"] {
-    width: 16px;
-  }
+
   form {
-    display: flex;
-    gap: 0.5rem;
     flex-direction: column;
-  }
-  #search {
-    background-color: var(--neutral-800);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* padding: 0.4rem; */
-    border-radius: 0.3rem;
     gap: 0.5rem;
-    padding-left: 0.7rem;
   }
 
   #searchInput {
-    border: none;
-    color: var(--neutral-300);
-    background-color: var(--neutral-800);
-    width:100%;
-    height:2rem;
-  }
-  #searchInput:focus{
-    outline:none; 
-  }
-  #searchButton {
-    color: var(--neutral-200);
-    padding: 0.4rem;
-    border-radius: 0.3rem;
-    gap: 0.5rem;
     width: 100%;
-    background-color: var(--blue-500);
+    height: 2rem;
   }
 
-  #placeMenu {
-    display: flex;
-    margin-top: 1rem;
-    border-radius: 1rem;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  #searchButton {
+    width: 100%;
   }
 
-  #placeName {
-    font-size: 1.5rem;
-  }
-  #tempDisplay {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #dateDay {
-    color: var(--neutral-200);
-  }
-  #temperature {
-    font-size: 3rem;
-    font-style: italic;
-  }
-
-  .statsObject {
-    background-color: var(--neutral-800);
-  }
   #placeMenu {
     height: 10rem;
     background-image: url(../assets/images/bg-today-small.svg);
@@ -129,10 +239,9 @@ h1 {
     background-size: cover;
     background-position: center;
     border-radius: 1rem;
+    flex-direction: column;
   }
-  #tempIcon {
-    height: 5rem;
-  }
+
   #statsMenu {
     margin-top: 0.7rem;
     margin-bottom: 0.7rem;
@@ -142,291 +251,179 @@ h1 {
     grid-template-rows: repeat(2, 1fr);
     gap: 0.7rem;
   }
-  .statsObject {
-    padding: 0.7rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.3rem;
-    border: 1px solid var(--neutral-600);
-    gap: 0.5rem;
-  }
-  .cardTitle {
-    font-size: 0.8rem;
-  }
-  .statsValue {
-    font-size: 1.5rem;
-  }
+
   .weekIcon {
-    width: 4rem;
+    width: 3rem;
   }
+
   #dailyforcast {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 0.7rem;
     margin: 0.7rem 0;
-    height: 24rem;
+    height: 21rem;
   }
-  .dailyCard {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--neutral-800);
-    border-radius: 0.5rem;
-    border: 1px solid var(--neutral-600);
-  }
-  .dailyTemp {
-    display: flex;
-    gap: 1.5rem;
-  }
-  #hoursMenu {
-    background-color: var(--neutral-800);
-    display: flex;
-    flex-direction: column;
-    padding: 0.7rem;
-    border-radius: 1rem;
-  }
-  #hoursHeader {
-    display: flex;
-    justify-content: space-between;
-  }
-  #hourtitle {
-    padding: 0.7rem;
-    gap: 0.7rem;
-  }
-  #DayD {
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    background-color: var(--neutral-600);
-    padding: 0.4rem 0.9rem;
-    gap: 0.7rem;
-    border-radius: 0.7rem;
-  }
-  #dayDropdown {
-    width: 0.7rem;
-  }
-  #hourContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
-    margin-top: 0.7rem;
-  }
-  .hour {
-    display: flex;
-    align-items: center;
-    background-color: var(--neutral-700);
-    gap: 0.7rem;
-    padding: 0.7rem;
-    border-radius: 0.7rem;
-    border: 1px solid var(--neutral-600);
-  }
-  .hourIcon {
-    height: 1.6rem;
-  }
-  .time {
-    margin-right: auto;
+
+  #tempIcon {
+    height: 5rem;
   }
 }
 
-
-
-@media (min-width: 500px ) and (max-width:1000px) {
+/*tabs*/
+@media (min-width: 500px) and (max-width: 1000px) {
   body {
     padding: 0.4rem;
     display: grid;
-    grid-template-columns: repeat(3,clamp(10rem,34%,1000px));
-    grid-template-rows: repeat(4,min(30rem,));
+    grid-template-columns: repeat(2,1fr), clamp(12.7rem, 17rem, 25vw);
+    grid-template-rows: repeat(4, clamp(12rem));
   }
-  #searchMenu{
+
+  #searchMenu {
     grid-area:1/1/2/4;
   }
-  #header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #units {
-    display: flex;
-    background-color: var(--neutral-800);
-    gap: 0.4rem;
-    padding: 0.4rem;
-    border-radius: 0.2rem;
-  }
-  img[class="toolIcons"] {
-    width: 16px;
-  }
+
   form {
-    display: flex;
-    gap: 0.5rem;
     justify-content: center;
-  }
-  #search {
-    background-color: var(--neutral-800);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 0.3rem;
-    gap: 0.5rem;
-    padding-left: 0.7rem;
   }
 
   #searchInput {
-    border: none;
-    color: var(--neutral-300);
-    background-color: var(--neutral-800);
-    width:35vw;
-    height:2rem;
+    width: 35vw;
+    height: 2rem;
   }
-  #searchInput:focus{
-    outline:none; 
-  }
+
   #searchButton {
-    color: var(--neutral-200);
-    padding: 0.4rem;
-    border-radius: 0.3rem;
-    gap: 0.5rem;
-    background-color: var(--blue-500);
-    width:15vw;
+    width: 15vw;
   }
 
   #placeMenu {
     grid-area:2/1/3/4;
-    display: flex;
-    margin-top: 1rem;
-    border-radius: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    padding:0 4rem;
-  }
-
-  #placeName {
-    font-size: 1.5rem;
-  }
-  #tempDisplay {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  #dateDay {
-    color: var(--neutral-200);
-  }
-  #temperature {
-    font-size: 3rem;
-    font-style: italic;
-  }
-
-  .statsObject {
-    background-color: var(--neutral-800);
-  }
-  #placeMenu {
+    padding: 0 4rem;
     height: 10rem;
     background-image: url(../assets/images/bg-today-large.svg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     border-radius: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
   }
-  #tempIcon {
-    height: 5rem;
-  }
+
   #statsMenu {
     grid-area:3/1/4/3;
     margin-top: 0.7rem;
-    margin-bottom: 0.7rem;
+    margin-bottom: 1rem;
     display: grid;
-    height: 12rem;
+    height: 10rem;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(2, 1fr);
     gap: 0.7rem;
   }
-  .statsObject {
-    padding: 0.7rem;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.3rem;
-    border: 1px solid var(--neutral-600);
-    gap: 0.5rem;
-  }
-  .cardTitle {
-    font-size: 0.8rem;
-  }
-  .statsValue {
-    font-size: 1.5rem;
-  }
+
   .weekIcon {
-    width: 4rem;
+    width: 3rem;
   }
-  #weekMenu{
-    grid-area:4/1/5/3;
+
+  #weekMenu {
+    grid-area: 4/1/5/3;
   }
+
   #dailyforcast {
     display: grid;
     grid-template: repeat(3, 1fr) / repeat(3, 1fr);
     gap: 0.7rem;
     margin: 0.7rem 0;
-    height: 24rem;
+    height: 20rem;
   }
-  .dailyCard {
-    padding: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--neutral-800);
-    border-radius: 0.5rem;
-    border: 1px solid var(--neutral-600);
-  }
-  .dailyTemp {
-    display: flex;
-    gap: 1.5rem;
-  }
+
   #hoursMenu {
     grid-area:3/3/5/4;
-    background-color: var(--neutral-800);
+    margin-top: 0.5rem;
+    margin-left: 0.7rem;
+  }
+
+  #tempIcon {
+    height: 5rem;
+  }
+}
+
+/* laptops*/
+
+@media (min-width: 1000px) {
+  body {
+    padding: 3vh 5vw;
+    display: grid;
+    grid-template-columns: 60vw , 20vw;
+    grid-template-rows: 25vh, 35vh, 25vh, 25vh;
+  }
+
+  #searchMenu {
+    grid-area: 1/1/2/3;
+  }
+  form{
     display: flex;
-    flex-direction: column;
-    padding: 0.7rem;
+    justify-content: center;
+    gap:1rem;
+  }
+  #searchInput {
+    width: 35vw;
+    height: 2rem;
+    border-radius: 0.5rem;
+  }
+
+  #searchButton {
+    width: 15vw;
+  }
+
+  #placeMenu {
+    grid-area:2/1/3/2;
+    padding: 0 4rem;
+    height: 15rem;
+    background-image: url(../assets/images/bg-today-large.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     border-radius: 1rem;
-  }
-  #hoursHeader {
-    display: flex;
+    flex-direction: row;
     justify-content: space-between;
-  }
-  #hourtitle {
-    padding: 0.7rem;
-    gap: 0.7rem;
-  }
-  #DayD {
-    font-size: 0.8rem;
-    display: flex;
     align-items: center;
-    background-color: var(--neutral-600);
-    padding: 0.4rem 0.9rem;
-    gap: 0.7rem;
-    border-radius: 0.7rem;
   }
-  #dayDropdown {
-    width: 0.7rem;
-  }
-  #hourContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 0.7rem;
+
+  #statsMenu {
+    grid-area:3/1/4/2;
     margin-top: 0.7rem;
-  }
-  .hour {
-    display: flex;
-    align-items: center;
-    background-color: var(--neutral-700);
+    margin-bottom: 1rem;
+    display: grid;
+    height: 10rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     gap: 0.7rem;
-    padding: 0.7rem;
-    border-radius: 0.7rem;
-    border: 1px solid var(--neutral-600);
   }
-  .hourIcon {
-    height: 1.6rem;
+
+  .weekIcon {
+    width: 4rem;
   }
-  .time {
-    margin-right: auto;
+
+  #weekMenu {
+    grid-area: 4/1/5/2;
+  }
+
+  #dailyforcast {
+    display: grid;
+    grid-template: repeat(1, 1fr) / repeat(7, 1fr);
+    gap: 0.7rem;
+    height: 8rem;
+    margin-top: 0.8rem;
+  }
+
+  #hoursMenu {
+    grid-area:2/2/5/3;
+    margin-top: 1rem;
+    margin-left: 0.7rem;
+    padding: 0.8rem;
+  }
+
+  #tempIcon {
+    height: 5rem;
   }
 }
