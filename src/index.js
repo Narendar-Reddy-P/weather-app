@@ -1,10 +1,21 @@
 import "./style.css";
+import { serverError401,resultNotFound,restoreContainers } from "./errormessage";
 
 const weatherKey=`FFFP9LKXSXPL28VA9KWPRE3NW`;
 
 async function getWeather(location){
    try{
       let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${weatherKey}`);
+      console.log(response);
+      if(!(response.ok)){
+         if(response.status==401){
+            serverError401();
+         }else{
+            resultNotFound();
+         }
+      }else{
+         restoreContainers();
+      }
       let data = await response.json();
       console.log(data);
    }catch(error){
@@ -75,3 +86,5 @@ inches.addEventListener("click",()=>{
       milliMeters.classList.remove("selected");
    }
 });
+
+

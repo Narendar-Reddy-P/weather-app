@@ -46,7 +46,6 @@ img[class="toolIcons"] {
 }
 
 form {
-  
   display: flex;
 }
 
@@ -92,7 +91,6 @@ form {
   border-radius: 0.3rem;
   gap: 0.5rem;
   background-color: var(--blue-500);
-  cursor: pointer;
 }
 
 #placeMenu {
@@ -194,28 +192,29 @@ form {
 #hourContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.3rem;
   margin-top: 0.7rem;
 }
 
-.hour {
+.hour{
   display: flex;
   align-items: center;
+  margin: 0.5rem;
   background-color: var(--neutral-700);
-  gap: 0.7rem;
-  padding: 0.7rem;
-  border-radius: 0.7rem;
-  border: 1px solid var(--neutral-600);
+  border-radius: 0.5rem;
+  gap:0.3rem;
+  border: 2px solid var(--neutral-600);
 }
 
-.hourIcon {
-  height: 1.6rem;
+.hourIcon{
+  width: 3rem;
 }
-
-.time {
-  margin-right: auto;
+.time{
+  margin-right:auto;
 }
-
+.hourTemp{
+  padding-right: 1rem;
+}
 /* mobile */
 @media (max-width: 500px) {
   body {
@@ -291,7 +290,8 @@ form {
     gap:1rem;
   }
   #searchInput {
-    width: 35vw;
+    width: 100%;
+    min-width: 4rem;
     height: 2rem;
   }
 
@@ -372,7 +372,7 @@ form {
   #searchInput {
     width: 35vw;
     height: 2rem;
-    border-radius: 0.5rem;
+    border-radius: 0.7rem;
   }
 
   #searchButton {
@@ -523,11 +523,6 @@ hr{
 #inches.list.selected .tick{
   display: block;
 }
-
-.hourDay{
-  position:relative;
-  cursor: pointer;
-}
 #DayD{
   cursor: pointer;
 }
@@ -547,5 +542,38 @@ hr{
 #DayD:hover #hourDropdown{
   opacity: 1;
   visibility: visible;
-  transition-delay: 1s;
+  transition-delay: 0.2s;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.noResult {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0.7rem;
+}
+
+.errorContainer{
+  display: flex;;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap:0.5rem;
+}
+
+.muteImg{
+  width: 2rem;
+}
+
+.retryContainer{
+  display: flex;
+  background-color: var(--neutral-800);
+  gap:0.5rem;
+  padding: 0.5rem;
+  border:2px solid var(--neutral-700);
+  border-radius: 0.5rem;
 }
