@@ -1,43 +1,22 @@
 import "./style.css";
-import { serverError401,resultNotFound,restoreContainers } from "./errormessage";
+import { getWeather } from "./model";
 
-const weatherKey=`FFFP9LKXSXPL28VA9KWPRE3NW`;
+//default search
+let location="veldanda";
+getWeather(location);
 
-async function getWeather(location){
-   try{
-      let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${weatherKey}`);
-      console.log(response);
-      if(!(response.ok)){
-         if(response.status==401){
-            serverError401();
-         }else{
-            resultNotFound();
-         }
-      }else{
-         restoreContainers();
-      }
-      let data = await response.json();
-      console.log(data);
-   }catch(error){
-      console.log(`error: ${error}`)
-   }
-}
-
+//search event listeners
 const searchInput=document.querySelector("#searchInput")
 const searchButton=document.querySelector("#searchButton");
-
 searchButton.addEventListener("click",(e)=>{
    e.preventDefault();
-   let location = searchInput.value; 
+   location = searchInput.value; 
    getWeather(location);
 });
 
+//dropdowns
 const unitsDropdown=document.querySelector("#unitsDropdown");
 const units=document.querySelector("#units");
-
-
-
-
 
 const celsius=document.querySelector("#celsius");
 celsius.classList.add("selected");
@@ -86,5 +65,12 @@ inches.addEventListener("click",()=>{
       milliMeters.classList.remove("selected");
    }
 });
+
+const now = new Date();
+console.log(now.toString());            // Local time as string
+console.log(now.toISOString());         // UTC ISO formatks
+console.log(now.getFullYear());         // 2025
+console.log(now.getMonth() + 1);        // 11 (months are 0-based)
+console.log(now.getHours());   
 
 
