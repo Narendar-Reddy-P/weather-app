@@ -1,5 +1,6 @@
 import "./style.css";
 import { getWeather } from "./model";
+import { updateTemperature, updateWindSpeed, updateMmToInch} from "./view";
 
 //default search
 let location="veldanda";
@@ -25,12 +26,14 @@ celsius.addEventListener("click",()=>{
    if(!(celsius.classList.contains("selected"))){
       celsius.classList.add("selected");
       fahrenheit.classList.remove("selected");
+      updateTemperature(true);
    }
 });
 fahrenheit.addEventListener("click",()=>{
    if(!(fahrenheit.classList.contains("selected"))){
       fahrenheit.classList.add("selected");
       celsius.classList.remove("selected");
+      updateTemperature(false);
    }
 });
 
@@ -40,13 +43,15 @@ const mile=document.querySelector("#mile");
 kiloMeter.addEventListener("click",()=>{
    if(!(kiloMeter.classList.contains("selected"))){
       kiloMeter.classList.add("selected");
-      mile.classList.remove("selected")
+      mile.classList.remove("selected");
+      updateWindSpeed(true);
    }
 });
 mile.addEventListener("click",()=>{
    if(!(mile.classList.contains("selected"))){
       mile.classList.add("selected");
       kiloMeter.classList.remove("selected");
+      updateWindSpeed(false);
    }
 });
 
@@ -57,20 +62,23 @@ milliMeters.addEventListener("click",()=>{
    if(!(milliMeters.classList.contains("selected"))){
       milliMeters.classList.add("selected");
       inches.classList.remove("selected");
+      updateMmToInch(true);
    }
 });
 inches.addEventListener("click",()=>{
    if(!(inches.classList.contains("selected"))){
       inches.classList.add("selected");
       milliMeters.classList.remove("selected");
+      updateMmToInch(false);
    }
 });
 
 const now = new Date();
-console.log(now.toString());            // Local time as string
-console.log(now.toISOString());         // UTC ISO formatks
-console.log(now.getFullYear());         // 2025
-console.log(now.getMonth() + 1);        // 11 (months are 0-based)
-console.log(now.getHours());   
 
-
+console.log(now.getFullYear());   // 2025 (current year)
+console.log(now.getMonth());      // 0-11 (month index, January = 0)
+console.log(now.getDate());       // 1-31 (day of the month)
+console.log(now.getDay()+4);        // 0-6 (day of the week, Sunday = 0)
+console.log(now.getHours());      // 0-23 (hour of the day)
+console.log(now.getMinutes());    // 0-59 (minutes)
+console.log(now.getSeconds());    // 0-59 (seconds)

@@ -3,11 +3,13 @@ import errorIcon from '../assets/images/icon-error.svg';
 import retryIcon from '../assets/images/icon-retry.svg';
 
 //status 404
-const placeMenu =document.querySelector("#placeMenu");
-const statsMenu = document.querySelector("#statsMenu");
-const weekMenu = document.querySelector("#weekMenu");
-const hoursMenu=document.querySelector("#hoursMenu");
-const searchMenu=document.querySelector("#searchMenu");
+let containers=[
+   document.querySelector("#placeMenu"),
+   document.querySelector("#statsMenu"),
+   document.querySelector("#weekMenu"),
+   document.querySelector("#hoursMenu"),
+   document.querySelector("#searchMenu"),
+]
 
 const serverError=document.createElement("div");
 serverError.classList.add("errorContainer");
@@ -43,29 +45,24 @@ noResult.classList.add("hidden");
 document.body.appendChild(noResult);
 
 function serverError401(){
-   placeMenu.classList.add("hidden");
-   statsMenu.classList.add("hidden");
-   weekMenu.classList.add("hidden");
-   hoursMenu.classList.add("hidden");
-   searchMenu.classList.add("hidden");
+   for(let i=0;i<5;i++){
+      containers[i].classList.add("hidden");
+   }
    noResult.classList.add("hidden");
    serverError.classList.remove("hidden");
 }
 
 function resultNotFound(){
-   placeMenu.classList.add("hidden");
-   statsMenu.classList.add("hidden");
-   weekMenu.classList.add("hidden");
-   hoursMenu.classList.add("hidden");
+   for(let i=0;i<4;i++){
+      containers[i].classList.add("hidden");
+   }
    serverError.classList.add("hidden");
    noResult.classList.remove("hidden");
 }
 function restoreContainers(){
-   placeMenu.classList.remove("hidden");
-   statsMenu.classList.remove("hidden");
-   weekMenu.classList.remove("hidden");
-   hoursMenu.classList.remove("hidden");
-   searchMenu.classList.remove("hidden");
+   for(let i=0;i<5;i++){
+      containers[i].classList.remove("hidden");
+   }
    serverError.classList.add("hidden");
    noResult.classList.add("hidden");
 }
