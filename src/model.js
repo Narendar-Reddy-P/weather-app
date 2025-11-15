@@ -1,5 +1,5 @@
 import { serverError401, restoreContainers, resultNotFound } from "./errorMessage";
-import { updateCurrentConditions } from "./view";
+import { updateCurrentConditions, updateDailyForcast } from "./view";
 
 //images
 import snow from "../assets/images/icon-snow.webp";
@@ -88,6 +88,7 @@ async function getWeather(location){
       await dataSeparationCC();
       dataSeparationDF();
       updateCurrentConditions();
+      updateDailyForcast();
    }catch(error){
       console.log(`error: ${error}`)
    }
@@ -119,10 +120,11 @@ async function dataSeparationCC(){
 
 //DailyForecast
 function dataSeparationDF(){
+   dailyForestData=[];
    for(let i=0;i<7;i++){
       let temp={
          day: weekShortCut[new Date(data["days"][i]["datetime"]).getDay()],
-         icon: data["days"][i]["icon"],
+         icon: weatherIconList[data["days"][i]["icon"]],
          maxTemp: data["days"][i]["tempmax"],
          minTemp: data["days"][i]["tempmin"],
       }

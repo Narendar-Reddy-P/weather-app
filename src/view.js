@@ -8,8 +8,6 @@ let feelsLike = document.querySelector("#feelsLike");
 let humidity =document.querySelector("#humidity");
 let windSpeed = document.querySelector("#windSpeed");
 let precipitation = document.querySelector("#precipitation");
-let tempIcon=document.querySelector("#tempIcon");
-
 
 function updateCurrentConditions(){
    if(currentConditions["isCountry"]){
@@ -19,28 +17,18 @@ function updateCurrentConditions(){
    }
    dayDate.textContent=`${currentConditions["day"]}, ${currentConditions["month"]} ${currentConditions["date"]}, ${currentConditions["year"]}`
    humidity.textContent=`${currentConditions["humidity"]}`;
-   updateWindSpeed(true);
-   updateTemperature(true);
+   windSpeed.textContent=`${mphToKmh(currentConditions["wind"])} km/h`;
+   temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
+   feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
    if(currentConditions["precipitation"]==null){
       currentConditions["precipitation"]=0;
    }
-   updateMmToInch(true);
-   tempIcon.src=currentConditions["icon"];
+   precipitation.textContent=`${currentConditions["precipitation"]} mm`;
 }
 
 function fahrenheitToCelcius(F){
    let C= (F-32)/1.8;
    return Number(C.toFixed(2));
-}
-
-function updateTemperature(bool){
-   if(bool){
-      temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
-      feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
-   }else{
-      temperature.textContent=`${currentConditions["temperature"]}° F`;
-      feelsLike.textContent=`${currentConditions["feelsLike"]}° F`;
-   }
 }
 
 function mphToKmh(mph){
@@ -69,21 +57,48 @@ function updateMmToInch(bool){
    }
 }
 
-let dailyCard={
-   title:[],
-   icon:[],
-   maxTemp:[],
-   minTemp:[],
+let dailyCard=[]
+function updateDailyForcast(){
+   dailyCard = [];
+   for(let i=0;i<7;i++){
+      const day = document.querySelector(`#cardTitle${i}`);
+      const icon = document.querySelector(`#weekIcon${i}`);
+      const max = document.querySelector(`#maxTemp${i}`);
+      const min = document.querySelector(`#minTemp${i}`);
+
+      dailyCard.push({ day, icon, max, min });
+   }
+   for(let i=0;i<7;i++){
+      const data = dailyForestData[i];
+      if(!data) continue;
+      const slot = dailyCard[i];
+      slot.day.textContent = data.day;
+      slot.icon.src = data.icon;
+      slot.max.textContent = `${Math.round(fahrenheitToCelcius(data.maxTemp))}°`;
+      slot.min.textContent = `${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
+   }
 }
 
-for(i=0;i<7;i++){
-   dailyCard.title.push(document.querySelector(`#cardTitle${i}`));
-   dailyCard.icon.push(document.querySelector(`#weekIcon${i}`));
-   dailyCard.maxTemp.push(document.querySelector(`#maxTemp${i}`));
-   dailyCard.minTemp.push(document.querySelector(`#minTemp${i}`));
+function updateTemperature(bool){
+   if(bool){
+      temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
+      feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
+      for(let i=0;i<7;i++){
+         const data = dailyForestData[i];
+         const slot = dailyCard[i];
+         slot.max.textContent = `${Math.round(fahrenheitToCelcius(data.maxTemp))}°`;
+         slot.min.textContent =`${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
+      }
+   }else{
+      temperature.textContent=`${currentConditions["temperature"]}° F`;
+      feelsLike.textContent=`${currentConditions["feelsLike"]}° F`;
+      for(let i=0;i<7;i++){
+         const data = dailyForestData[i];
+         const slot = dailyCard[i];
+         slot.max.textContent = `${Math.round(data.maxTemp)}°`;
+         slot.min.textContent =`${Math.round(data.minTemp)}°`;
+      }
+   }
 }
 
-
-
-
-export {updateCurrentConditions,updateTemperature, updateWindSpeed, updateMmToInch};
+export {updateCurrentConditions,updateTemperature, updateWindSpeed, updateMmToInch, updateDailyForcast};
