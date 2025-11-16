@@ -3,7 +3,7 @@ import { getWeather } from "./model";
 import { updateTemperature, updateWindSpeed, updateMmToInch} from "./view";
 
 //default search
-let location="veldanda";
+let location="hyderabad";
 getWeather(location);
 
 //search event listeners
@@ -73,12 +73,5 @@ inches.addEventListener("click",()=>{
    }
 });
 
-const now = new Date();
 
-console.log(now.getFullYear());   // 2025 (current year)
-console.log(now.getMonth());      // 0-11 (month index, January = 0)
-console.log(now.getDate());       // 1-31 (day of the month)
-console.log(now.getDay()+4);        // 0-6 (day of the week, Sunday = 0)
-console.log(now.getHours());      // 0-23 (hour of the day)
-console.log(now.getMinutes());    // 0-59 (minutes)
-console.log(now.getSeconds());    // 0-59 (seconds)
+

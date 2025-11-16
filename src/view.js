@@ -1,4 +1,4 @@
-import { currentConditions, dailyForestData } from "./model";
+import { currentConditions, dailyForestData, hourlyForecastData } from "./model";
 
 
 let place=document.querySelector("#placeName");
@@ -8,15 +8,12 @@ let feelsLike = document.querySelector("#feelsLike");
 let humidity =document.querySelector("#humidity");
 let windSpeed = document.querySelector("#windSpeed");
 let precipitation = document.querySelector("#precipitation");
+let tempIcon = document.querySelector("#tempIcon");
 
 function updateCurrentConditions(){
-   if(currentConditions["isCountry"]){
-      place.textContent=`${currentConditions["place"]}`;
-   }else{
-      place.textContent=`${currentConditions["place"]}, ${currentConditions["country"]}`;
-   }
+   place.textContent=`${currentConditions["place"]}`;
    dayDate.textContent=`${currentConditions["day"]}, ${currentConditions["month"]} ${currentConditions["date"]}, ${currentConditions["year"]}`
-   humidity.textContent=`${currentConditions["humidity"]}`;
+   humidity.textContent=`${currentConditions["humidity"]}%`;
    windSpeed.textContent=`${mphToKmh(currentConditions["wind"])} km/h`;
    temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
    feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
@@ -24,6 +21,7 @@ function updateCurrentConditions(){
       currentConditions["precipitation"]=0;
    }
    precipitation.textContent=`${currentConditions["precipitation"]} mm`;
+   tempIcon.src = currentConditions["icon"];
 }
 
 function fahrenheitToCelcius(F){
@@ -58,6 +56,10 @@ function updateMmToInch(bool){
 }
 
 let dailyCard=[]
+let expandWeek={
+   "Sun":"Sunday", "Mon":"Monday", "Tue":"Tuesday", "Wed":"Wednesday", "Thu":"Thursday", "Fri":"Friday", "Sat":"Saturday", 
+}
+const weekDay=[];
 function updateDailyForcast(){
    dailyCard = [];
    for(let i=0;i<7;i++){
@@ -72,13 +74,14 @@ function updateDailyForcast(){
       const data = dailyForestData[i];
       if(!data) continue;
       const slot = dailyCard[i];
+      weekDay.push(expandWeek[data.day]);
+      console.log(expandWeek[data.day]);
       slot.day.textContent = data.day;
       slot.icon.src = data.icon;
       slot.max.textContent = `${Math.round(fahrenheitToCelcius(data.maxTemp))}°`;
       slot.min.textContent = `${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
    }
 }
-
 function updateTemperature(bool){
    if(bool){
       temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
@@ -101,4 +104,59 @@ function updateTemperature(bool){
    }
 }
 
-export {updateCurrentConditions,updateTemperature, updateWindSpeed, updateMmToInch, updateDailyForcast};
+const hourDays = [];
+const hoursIcon=[];
+const hoursTime=[];
+const hoursTemperature=[];
+function populateHourDays() {
+   for(let i=0; i<24;i++){
+      hoursIcon.push(document.querySelector(`#hourIcon${i}`));
+      hoursTime.push(document.querySelector(`#hourTime${i}`));
+      hoursTemperature.push(document.querySelector(`#hourTemp${i}`))
+   }
+   console.log(hoursIcon);
+   console.log(hoursTime);
+   console.log(hoursTemperature);
+   for(let i=0; i<7; i++){
+      const temp = document.querySelector(`#hourDay${i}`);
+      if(temp) {
+         temp.textContent = weekDay[i];
+         hourDays.push(temp);
+      }
+   }
+   if(hourDays.length > 0) {
+      const hourDay = document.querySelector("#hourDay");
+      hourDay.textContent = hourDays[0].textContent;
+      hourDays[0].classList.add("choosen");
+      loadHours(0);
+      for(let i=0; i<7; i++){
+         let temp = hourDays[i];
+         temp.addEventListener("click",()=>{
+            hourDay.textContent = temp.textContent;
+            temp.classList.add("choosen");
+            for(let j=0; j<7; j++){
+               if(temp.id !== hourDays[j].id){
+                  hourDays[j].classList.remove("choosen");
+               }
+            }
+            loadHours(i);
+         });
+      }
+   }
+}
+
+function loadHours(index){
+   console.log(index);
+   console.log(hourlyForecastData[index]);
+   console.log(hoursIcon);
+   console.log(hoursTime);
+   console.log(hoursTemperature);
+   for(let i=0;i<24;i++){
+      console.log(hourlyForecastData[index][i]["icon"])
+      hoursIcon[i].src=hourlyForecastData[index][i]["icon"];
+      hoursTemperature[i].textContent=hourlyForecastData[index][i]["temp"];
+      hoursTime[i].textContent=hourlyForecastData[index][i]["time"];
+   }
+}
+
+export {updateCurrentConditions,updateTemperature, updateWindSpeed, updateMmToInch, updateDailyForcast, populateHourDays};
