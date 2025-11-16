@@ -1,6 +1,6 @@
 import "./style.css";
 import { getWeather } from "./model";
-import { updateTemperature, updateWindSpeed, updateMmToInch} from "./view";
+import { updateTemperature, updateWindSpeed, updatePrecipitation} from "./view";
 
 //default search
 let location="hyderabad";
@@ -15,10 +15,9 @@ searchButton.addEventListener("click",(e)=>{
    getWeather(location);
 });
 
-//dropdowns
-const unitsDropdown=document.querySelector("#unitsDropdown");
-const units=document.querySelector("#units");
-
+let tempBool=true;
+let windSpeedBool=true;
+let precipitationBool=true;
 const celsius=document.querySelector("#celsius");
 celsius.classList.add("selected");
 const fahrenheit=document.querySelector("#fahrenheit");
@@ -26,17 +25,18 @@ celsius.addEventListener("click",()=>{
    if(!(celsius.classList.contains("selected"))){
       celsius.classList.add("selected");
       fahrenheit.classList.remove("selected");
-      updateTemperature(true);
+      tempBool=true;
+      updateTemperature();
    }
 });
 fahrenheit.addEventListener("click",()=>{
    if(!(fahrenheit.classList.contains("selected"))){
       fahrenheit.classList.add("selected");
       celsius.classList.remove("selected");
-      updateTemperature(false);
+      tempBool=false;
+      updateTemperature();
    }
 });
-
 const kiloMeter=document.querySelector("#kiloMeter");
 kiloMeter.classList.add("selected");
 const mile=document.querySelector("#mile");
@@ -44,17 +44,18 @@ kiloMeter.addEventListener("click",()=>{
    if(!(kiloMeter.classList.contains("selected"))){
       kiloMeter.classList.add("selected");
       mile.classList.remove("selected");
-      updateWindSpeed(true);
+      windSpeedBool=true;
+      updateWindSpeed();
    }
 });
 mile.addEventListener("click",()=>{
    if(!(mile.classList.contains("selected"))){
       mile.classList.add("selected");
       kiloMeter.classList.remove("selected");
-      updateWindSpeed(false);
+      windSpeedBool=false;
+      updateWindSpeed();
    }
 });
-
 const milliMeters=document.querySelector("#millimeters");
 milliMeters.classList.add("selected");
 const inches=document.querySelector("#inches");
@@ -62,16 +63,18 @@ milliMeters.addEventListener("click",()=>{
    if(!(milliMeters.classList.contains("selected"))){
       milliMeters.classList.add("selected");
       inches.classList.remove("selected");
-      updateMmToInch(true);
+      precipitationBool=true;
+      updatePrecipitation();
    }
 });
 inches.addEventListener("click",()=>{
    if(!(inches.classList.contains("selected"))){
       inches.classList.add("selected");
       milliMeters.classList.remove("selected");
-      updateMmToInch(false);
+      precipitationBool=false;
+      updatePrecipitation();
    }
 });
 
-
+export {tempBool, windSpeedBool, precipitationBool}
 

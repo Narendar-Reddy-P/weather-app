@@ -217,7 +217,7 @@ form {
   margin-right:auto;
 }
 .hourTemp{
-  padding-right: 1rem;
+  padding-right: 1.5rem;
 }
 /* mobile */
 @media (max-width: 500px) {
@@ -359,10 +359,10 @@ form {
 
 @media (min-width: 1000px) {
   body {
-    padding: 3vh 5vw;
+    padding: 2.5vh 5vw;
     display: grid;
-    grid-template-columns: 60vw , 20vw;
-    grid-template-rows: 25vh, 20vh, 25vh, 25vh;
+    grid-template-columns: 60vw , 15vw;
+    grid-template-rows: 20vh, 20vh, 25vh, 25vh;
   }
 
   #searchMenu {
@@ -450,6 +450,7 @@ form {
   border-radius: 0.7rem;
   width: 9rem;
   transition: opacity 0.3s ease-out 0.2s, visibility 0s linear 0.2s;
+  z-index: 1;
 }
 .dropdownHeading{
   margin-bottom: 0.2rem;

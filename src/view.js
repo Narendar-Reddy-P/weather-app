@@ -1,6 +1,25 @@
 import { currentConditions, dailyForestData, hourlyForecastData } from "./model";
+import { tempBool, windSpeedBool, precipitationBool } from "./index";
 
-
+//Helper Functions
+function fahrenheitToCelcius(F){
+   let C= (F-32)/1.8;
+   return Number(C.toFixed(2));
+}
+function mphToKmh(mph){
+   let kmh = mph * 1.60934;
+   return Number(kmh.toFixed(2));
+}
+function mmToInch(mm){
+   let inch = mm/25.4;
+   return Number(inch.toFixed(3));
+}
+function updateTemperature(){
+   statsMenuTemperature();
+   weekMenuTemperature();
+   hoursMenuTemperature();
+}
+//---> Main Update
 let place=document.querySelector("#placeName");
 let dayDate=document.querySelector("#dateDay");
 let temperature = document.querySelector("#temperature");
@@ -9,52 +28,43 @@ let humidity =document.querySelector("#humidity");
 let windSpeed = document.querySelector("#windSpeed");
 let precipitation = document.querySelector("#precipitation");
 let tempIcon = document.querySelector("#tempIcon");
-
 function updateCurrentConditions(){
    place.textContent=`${currentConditions["place"]}`;
    dayDate.textContent=`${currentConditions["day"]}, ${currentConditions["month"]} ${currentConditions["date"]}, ${currentConditions["year"]}`
    humidity.textContent=`${currentConditions["humidity"]}%`;
-   windSpeed.textContent=`${mphToKmh(currentConditions["wind"])} km/h`;
-   temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
-   feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
+   updateWindSpeed();
+   statsMenuTemperature();
    if(currentConditions["precipitation"]==null){
       currentConditions["precipitation"]=0;
    }
-   precipitation.textContent=`${currentConditions["precipitation"]} mm`;
+   updatePrecipitation();
    tempIcon.src = currentConditions["icon"];
 }
-
-function fahrenheitToCelcius(F){
-   let C= (F-32)/1.8;
-   return Number(C.toFixed(2));
+function statsMenuTemperature(){
+   if(tempBool){
+      temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
+      feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
+   }else{
+      temperature.textContent=`${currentConditions["temperature"]}° F`;
+      feelsLike.textContent=`${currentConditions["feelsLike"]}° F`;
+   }
 }
-
-function mphToKmh(mph){
-   let kmh = mph * 1.60934;
-   return Number(kmh.toFixed(2));
-}
-
-function updateWindSpeed(bool){
-   if(bool){
+function updateWindSpeed(){
+   if(windSpeedBool){
       windSpeed.textContent=`${mphToKmh(currentConditions["wind"])} km/h`;
    }else{
       windSpeed.textContent=`${currentConditions["wind"]} mph`;
    }
 }
-
-function mmToInch(mm){
-   let inch = mm/25.4;
-   return Number(inch.toFixed(3));
-}
-
-function updateMmToInch(bool){
-   if(bool){
+function updatePrecipitation(){
+   if(precipitationBool){
       precipitation.textContent=`${currentConditions["precipitation"]} mm`;
    }else{
       precipitation.textContent=`${mmToInch(currentConditions["precipitation"])} inch`;
    }
 }
 
+//--->WeekMenu
 let dailyCard=[]
 let expandWeek={
    "Sun":"Sunday", "Mon":"Monday", "Tue":"Tuesday", "Wed":"Wednesday", "Thu":"Thursday", "Fri":"Friday", "Sat":"Saturday", 
@@ -78,14 +88,18 @@ function updateDailyForcast(){
       console.log(expandWeek[data.day]);
       slot.day.textContent = data.day;
       slot.icon.src = data.icon;
-      slot.max.textContent = `${Math.round(fahrenheitToCelcius(data.maxTemp))}°`;
-      slot.min.textContent = `${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
+      if(tempBool){
+         slot.max.textContent = `${Math.round(fahrenheitToCelcius(data.maxTemp))}°`;
+         slot.min.textContent = `${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
+      }else{
+         slot.max.textContent = `${Math.round(data.maxTemp)}°`;
+         slot.min.textContent =`${Math.round(data.minTemp)}°`;
+      }
+     
    }
 }
-function updateTemperature(bool){
-   if(bool){
-      temperature.textContent=`${fahrenheitToCelcius(currentConditions["temperature"])}° C`;
-      feelsLike.textContent=`${fahrenheitToCelcius(currentConditions["feelsLike"])}° C`;
+function weekMenuTemperature(){
+   if(tempBool){
       for(let i=0;i<7;i++){
          const data = dailyForestData[i];
          const slot = dailyCard[i];
@@ -93,8 +107,6 @@ function updateTemperature(bool){
          slot.min.textContent =`${Math.round(fahrenheitToCelcius(data.minTemp))}°`;
       }
    }else{
-      temperature.textContent=`${currentConditions["temperature"]}° F`;
-      feelsLike.textContent=`${currentConditions["feelsLike"]}° F`;
       for(let i=0;i<7;i++){
          const data = dailyForestData[i];
          const slot = dailyCard[i];
@@ -104,6 +116,7 @@ function updateTemperature(bool){
    }
 }
 
+//---->HoursMenu
 const hourDays = [];
 const hoursIcon=[];
 const hoursTime=[];
@@ -146,17 +159,31 @@ function populateHourDays() {
 }
 
 function loadHours(index){
-   console.log(index);
-   console.log(hourlyForecastData[index]);
-   console.log(hoursIcon);
-   console.log(hoursTime);
-   console.log(hoursTemperature);
    for(let i=0;i<24;i++){
       console.log(hourlyForecastData[index][i]["icon"])
       hoursIcon[i].src=hourlyForecastData[index][i]["icon"];
-      hoursTemperature[i].textContent=hourlyForecastData[index][i]["temp"];
+      if(tempBool){
+         hoursTemperature[i].textContent=`${Math.round(fahrenheitToCelcius(hourlyForecastData[index][i]["temp"]))}°`;
+      }else{
+         hoursTemperature[i].textContent=`${Math.round(hourlyForecastData[index][i]["temp"])}°`;
+      }
       hoursTime[i].textContent=hourlyForecastData[index][i]["time"];
    }
 }
+function hoursMenuTemperature(){
+   if(tempBool){
+      for(let index=0;index<7;index++){
+         for(let i=0;i<24;i++){
+            hoursTemperature[i].textContent=`${Math.round(fahrenheitToCelcius(hourlyForecastData[index][i]["temp"]))}°`;
+         }
+      }
+   }else{
+      for(let index=0;index<7;index++){
+         for(let i=0;i<24;i++){
+            hoursTemperature[i].textContent=`${Math.round(hourlyForecastData[index][i]["temp"])}°`;
+         }
+      }
+   }
+}
 
-export {updateCurrentConditions,updateTemperature, updateWindSpeed, updateMmToInch, updateDailyForcast, populateHourDays};
+export {updateCurrentConditions,updateTemperature, updateWindSpeed, updatePrecipitation, updateDailyForcast, populateHourDays};
