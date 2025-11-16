@@ -1,6 +1,7 @@
 import "./style.css";
 import { getWeather } from "./model";
 import { updateTemperature, updateWindSpeed, updatePrecipitation} from "./view";
+import { enterValidName } from "./errorMessage";
 
 //default search
 let location="hyderabad";
@@ -12,7 +13,11 @@ const searchButton=document.querySelector("#searchButton");
 searchButton.addEventListener("click",(e)=>{
    e.preventDefault();
    location = searchInput.value; 
-   getWeather(location);
+   if(location==""){
+      enterValidName();
+   }else{
+      getWeather(location);
+   }
 });
 
 let tempBool=true;

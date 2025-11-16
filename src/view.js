@@ -85,7 +85,6 @@ function updateDailyForcast(){
       if(!data) continue;
       const slot = dailyCard[i];
       weekDay.push(expandWeek[data.day]);
-      console.log(expandWeek[data.day]);
       slot.day.textContent = data.day;
       slot.icon.src = data.icon;
       if(tempBool){
@@ -127,9 +126,6 @@ function populateHourDays() {
       hoursTime.push(document.querySelector(`#hourTime${i}`));
       hoursTemperature.push(document.querySelector(`#hourTemp${i}`))
    }
-   console.log(hoursIcon);
-   console.log(hoursTime);
-   console.log(hoursTemperature);
    for(let i=0; i<7; i++){
       const temp = document.querySelector(`#hourDay${i}`);
       if(temp) {
@@ -160,7 +156,6 @@ function populateHourDays() {
 
 function loadHours(index){
    for(let i=0;i<24;i++){
-      console.log(hourlyForecastData[index][i]["icon"])
       hoursIcon[i].src=hourlyForecastData[index][i]["icon"];
       if(tempBool){
          hoursTemperature[i].textContent=`${Math.round(fahrenheitToCelcius(hourlyForecastData[index][i]["temp"]))}°`;

@@ -39,10 +39,10 @@ serverError.classList.add("hidden");
 document.body.appendChild(serverError);
 
 const noResult=document.createElement("div");
-noResult.textContent="No search result found";
 noResult.classList.add("noResult");
 noResult.classList.add("hidden");
 document.body.appendChild(noResult);
+
 
 function serverError401(){
    for(let i=0;i<5;i++){
@@ -53,6 +53,15 @@ function serverError401(){
 }
 
 function resultNotFound(){
+   noResult.textContent="No search result found";
+   for(let i=0;i<4;i++){
+      containers[i].classList.add("hidden");
+   }
+   serverError.classList.add("hidden");
+   noResult.classList.remove("hidden");
+}
+function enterValidName(){
+   noResult.textContent="Enter any place name";
    for(let i=0;i<4;i++){
       containers[i].classList.add("hidden");
    }
@@ -67,4 +76,4 @@ function restoreContainers(){
    noResult.classList.add("hidden");
 }
 
-export{serverError401,resultNotFound,restoreContainers};
+export{serverError401,resultNotFound,restoreContainers,enterValidName};

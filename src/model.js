@@ -64,7 +64,6 @@ const time = [
 async function getWeather(location){
    try{
       let response = await fetch(`https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=${weatherKey}`);
-      console.log(response);
       if(!(response.ok)){
          if(response.status==401){
             serverError401();
@@ -75,7 +74,6 @@ async function getWeather(location){
          restoreContainers();
       }
       data = await response.json();
-      console.log(data);
       dataSeparationCC();
       dataSeparationDF();
       dataSeparationHF();
@@ -105,7 +103,6 @@ async function dataSeparationCC(){
       precipitation: current["precip"],
       icon: weatherIconList[current["icon"]],
    }
-   console.log(currentConditions);
 }
 
 //DailyForecast
@@ -120,7 +117,6 @@ function dataSeparationDF(){
       }
       dailyForestData.push(temp);
    }
-   console.log(dailyForestData);
 }
 
 let hourlyForecastData={};
@@ -138,7 +134,6 @@ function dataSeparationHF(){
       }
       hourlyForecastData[i]=hours;
    }
-   console.log(hourlyForecastData);
 }
 export{getWeather};
 export{currentConditions, dailyForestData, hourlyForecastData};
