@@ -1,307 +1,326 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Weather Now</title>
-   <link rel="icon" href="../assets/images/favicon.png">
-</head>
-<body>
-   <div id="searchMenu">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Now</title>
+    <link rel="icon" href="../assets/images/favicon.png" />
+  </head>
+  <body>
+    <div id="searchMenu">
       <div id="header">
-         <img src="../assets/images/logo.svg" alt="weather logo">
-         <div id="units">
-            <img src="../assets/images/icon-units.svg" alt="units"
-            class="toolIcons">
-            <div>Units
-               <div id="unitsDropdown">
-                  <div id="tempDropdown">
-                     <div  class="dropdownHeading">Temperature</div>
-                     <div class="list" id="celsius">
-                        <div>Celsius (°C)</div>
-                        <div class="tick"><img src="../assets/images/icon-checkmark.svg" alt=""></div>
-                     </div>
-                     <div class="list" id="fahrenheit">
-                        <div>Fahrenhrit (°F)</div>
-                        <div class="tick"><img src="../assets/images/icon-checkmark.svg" alt=""></div>
-                     </div>
+        <img src="../assets/images/logo.svg" alt="weather logo" />
+        <div id="units">
+          <img
+            src="../assets/images/icon-units.svg"
+            alt="units"
+            class="toolIcons"
+          />
+          <div>
+            Units
+            <div id="unitsDropdown">
+              <div id="tempDropdown">
+                <div class="dropdownHeading">Temperature</div>
+                <div class="list" id="celsius">
+                  <div>Celsius (°C)</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
                   </div>
-                  <hr>
-                  <div>
-                     <div class="dropdownHeading">Wind Speed</div>
-                     <div class="list" id="kiloMeter">
-                        <div>km/h</div>
-                        <div class="tick">
-                           <img src="../assets/images/icon-checkmark.svg" alt="">
-                        </div>
-                     </div>
-                     <div class="list" id="mile">
-                        <div>mph</div>
-                        <div class="tick">
-                           <img src="../assets/images/icon-checkmark.svg" alt="">
-                        </div>
-                     </div>
+                </div>
+                <div class="list" id="fahrenheit">
+                  <div>Fahrenhrit (°F)</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
                   </div>
-                  <hr>
-                  <div>
-                     <div class="dropdownHeading">Precipitation</div>
-                     <div class="list" id="millimeters">
-                        <div>Millimeters (mm)</div>
-                        <div class="tick">
-                           <img src="../assets/images/icon-checkmark.svg" alt="">
-                        </div>
-                     </div>
-                     <div class="list" id="inches">
-                        <div>Inches (in)</div>
-                        <div class="tick">
-                           <img src="../assets/images/icon-checkmark.svg" alt="">
-                        </div>
-                     </div>
+                </div>
+              </div>
+              <hr />
+              <div>
+                <div class="dropdownHeading">Wind Speed</div>
+                <div class="list" id="kiloMeter">
+                  <div>km/h</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
                   </div>
-               </div>
+                </div>
+                <div class="list" id="mile">
+                  <div>mph</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div>
+                <div class="dropdownHeading">Precipitation</div>
+                <div class="list" id="millimeters">
+                  <div>Millimeters (mm)</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
+                  </div>
+                </div>
+                <div class="list" id="inches">
+                  <div>Inches (in)</div>
+                  <div class="tick">
+                    <img src="../assets/images/icon-checkmark.svg" alt="" />
+                  </div>
+                </div>
+              </div>
             </div>
-            <img src="../assets/images/icon-dropdown.svg" alt="icon-dropdown" class="toolIcons">
-         </div>
+          </div>
+          <img
+            src="../assets/images/icon-dropdown.svg"
+            alt="icon-dropdown"
+            class="toolIcons"
+          />
+        </div>
       </div>
-      <h1>
-         How's the sky looking today?
-      </h1>
+      <h1>How's the sky looking today?</h1>
       <form action="">
-         <div id="search">
-            <img src="../assets/images/icon-search.svg" alt="search">
-            <input type="text" id="searchInput" placeholder="Search for a place..." required>
-         </div>
-         <button type="submit" id="searchButton">Search</button>
+        <div id="search">
+          <img src="../assets/images/icon-search.svg" alt="search" />
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for a place..."
+            required
+          />
+        </div>
+        <button type="submit" id="searchButton">Search</button>
       </form>
-   </div>
-   <div id="placeMenu">
+    </div>
+    <div id="placeMenu">
       <div>
-      <div id="placeName"></div>
-      <div id="dateDay"></div>
+        <div id="placeName"></div>
+        <div id="dateDay"></div>
       </div>
       <div id="tempDisplay">
-         <img src="#" alt="weather Condition" id="tempIcon">
-         <div id="temperature"></div>
+        <img src="#" alt="weather Condition" id="tempIcon" />
+        <div id="temperature"></div>
       </div>
-   </div>
-   <div id="statsMenu">
+    </div>
+    <div id="statsMenu">
       <div class="statsObject">
-         <div class="cardTitle">Feels Like</div>
-         <div class="statsValue" id="feelsLike"></div>
-      </div>
-      <div class="statsObject">
-         <div class="cardTitle">Humidity</div>
-         <div class="statsValue" id="humidity"></div>
+        <div class="cardTitle">Feels Like</div>
+        <div class="statsValue" id="feelsLike"></div>
       </div>
       <div class="statsObject">
-         <div class="cardTitle">Wind</div>
-         <div class="statsValue" id="windSpeed"></div>
+        <div class="cardTitle">Humidity</div>
+        <div class="statsValue" id="humidity"></div>
       </div>
       <div class="statsObject">
-         <div class="cardTitle">Precipitation</div>
-         <div class="statsValue" id="precipitation"></div>
+        <div class="cardTitle">Wind</div>
+        <div class="statsValue" id="windSpeed"></div>
       </div>
-   </div>
-   <div id="weekMenu">
+      <div class="statsObject">
+        <div class="cardTitle">Precipitation</div>
+        <div class="statsValue" id="precipitation"></div>
+      </div>
+    </div>
+    <div id="weekMenu">
       <div id="containerTitle">Daily forecast</div>
-      <div  id="dailyforcast">
-         <div class="dailyCard" id="dailyCard0">
-            <div class="cardTitle" id="cardTitle0"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon0">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp0"></div>
-               <div class="celsius" id="minTemp0"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard1">
-            <div class="cardTitle" id="cardTitle1"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon1">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp1"></div>
-               <div class="celsius" id="minTemp1"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard2">
-            <div class="cardTitle" id="cardTitle2"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon2">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp2"></div>
-               <div class="celsius" id="minTemp2"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard3">
-            <div class="cardTitle" id="cardTitle3"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon3">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp3"></div>
-               <div class="celsius" id="minTemp3"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard4">
-            <div class="cardTitle" id="cardTitle4"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon4">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp4"></div>
-               <div class="celsius" id="minTemp4"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard5">
-            <div class="cardTitle" id="cardTitle5"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon5">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp5"></div>
-               <div class="celsius" id="minTemp5"></div>
-            </div>
-         </div>
-         <div class="dailyCard" id="dailyCard6">
-            <div class="cardTitle" id="cardTitle6"></div>
-            <img src="#" alt="icon" class="weekIcon" id="weekIcon6">
-            <div class="dailyTemp">
-               <div class="temp" id="maxTemp6"></div>
-               <div class="celsius" id="minTemp6"></div>
-            </div>
-         </div>
+      <div id="dailyforcast">
+        <div class="dailyCard" id="dailyCard0">
+          <div class="cardTitle" id="cardTitle0"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon0" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp0"></div>
+            <div class="celsius" id="minTemp0"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard1">
+          <div class="cardTitle" id="cardTitle1"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon1" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp1"></div>
+            <div class="celsius" id="minTemp1"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard2">
+          <div class="cardTitle" id="cardTitle2"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon2" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp2"></div>
+            <div class="celsius" id="minTemp2"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard3">
+          <div class="cardTitle" id="cardTitle3"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon3" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp3"></div>
+            <div class="celsius" id="minTemp3"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard4">
+          <div class="cardTitle" id="cardTitle4"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon4" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp4"></div>
+            <div class="celsius" id="minTemp4"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard5">
+          <div class="cardTitle" id="cardTitle5"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon5" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp5"></div>
+            <div class="celsius" id="minTemp5"></div>
+          </div>
+        </div>
+        <div class="dailyCard" id="dailyCard6">
+          <div class="cardTitle" id="cardTitle6"></div>
+          <img src="#" alt="icon" class="weekIcon" id="weekIcon6" />
+          <div class="dailyTemp">
+            <div class="temp" id="maxTemp6"></div>
+            <div class="celsius" id="minTemp6"></div>
+          </div>
+        </div>
       </div>
-   </div>
-   <div id="hoursMenu">
+    </div>
+    <div id="hoursMenu">
       <div id="hoursHeader">
-         <div id="hourtitle">Hourly forecast</div>
-         <div id="DayD">
-            <div id="hourDay"></div>
-            <div id="hourDropdown">
-               <div id="hourDay0">Monday</div>
-               <div id="hourDay1">Tuesday</div>
-               <div id="hourDay2">Wednesday</div>
-               <div id="hourDay3">Thursday</div>
-               <div id="hourDay4">Friday</div>
-               <div id="hourDay5">Saturday</div>
-               <div id="hourDay6">Sunday</div>
-            </div>
-            <img src="../assets/images/icon-dropdown.svg" alt="" id="dayDropdown">
-         </div>
-      </div>            
-      <div id="hourContainer">
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon0">
-            <div class="time" id="hourTime0"></div>
-            <div class="hourTemp" id="hourTemp0"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon1">
-            <div class="time" id="hourTime1"></div>
-            <div class="hourTemp" id="hourTemp1"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon2">
-            <div class="time" id="hourTime2"></div>
-            <div class="hourTemp" id="hourTemp2"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon3">
-            <div class="time" id="hourTime3"></div>
-            <div class="hourTemp" id="hourTemp3"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon4">
-            <div class="time" id="hourTime4"></div>
-            <div class="hourTemp" id="hourTemp4"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon5">
-            <div class="time" id="hourTime5"></div>
-            <div class="hourTemp" id="hourTemp5"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon6">
-            <div class="time" id="hourTime6"></div>
-            <div class="hourTemp" id="hourTemp6"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon7">
-            <div class="time" id="hourTime7"></div>
-            <div class="hourTemp" id="hourTemp7"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon8">
-            <div class="time" id="hourTime8"></div>
-            <div class="hourTemp" id="hourTemp8"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon9">
-            <div class="time" id="hourTime9"></div>
-            <div class="hourTemp" id="hourTemp9"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon10">
-            <div class="time" id="hourTime10"></div>
-            <div class="hourTemp" id="hourTemp10"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon11">
-            <div class="time" id="hourTime11"></div>
-            <div class="hourTemp" id="hourTemp11"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon12">
-            <div class="time" id="hourTime12"></div>
-            <div class="hourTemp" id="hourTemp12"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon13">
-            <div class="time" id="hourTime13"></div>
-            <div class="hourTemp" id="hourTemp13"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon14">
-            <div class="time" id="hourTime14"></div>
-            <div class="hourTemp" id="hourTemp14"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon15">
-            <div class="time" id="hourTime15"></div>
-            <div class="hourTemp" id="hourTemp15"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon16">
-            <div class="time" id="hourTime16"></div>
-            <div class="hourTemp" id="hourTemp16"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon17">
-            <div class="time" id="hourTime17"></div>
-            <div class="hourTemp" id="hourTemp17"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon18">
-            <div class="time" id="hourTime18"></div>
-            <div class="hourTemp" id="hourTemp18"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon19">
-            <div class="time" id="hourTime19"></div>
-            <div class="hourTemp" id="hourTemp19"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon20">
-            <div class="time" id="hourTime20"></div>
-            <div class="hourTemp" id="hourTemp20"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon21">
-            <div class="time" id="hourTime21"></div>
-            <div class="hourTemp" id="hourTemp21"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon22">
-            <div class="time" id="hourTime22"></div>
-            <div class="hourTemp" id="hourTemp22"></div>
-         </div>
-         <div class="hour">
-            <img src="#" alt="icon" class="hourIcon" id="hourIcon23">
-            <div class="time" id="hourTime23"></div>
-            <div class="hourTemp" id="hourTemp23"></div>
-         </div>
+        <div id="hourtitle">Hourly forecast</div>
+        <div id="DayD">
+          <div id="hourDay"></div>
+          <div id="hourDropdown">
+            <div id="hourDay0">Monday</div>
+            <div id="hourDay1">Tuesday</div>
+            <div id="hourDay2">Wednesday</div>
+            <div id="hourDay3">Thursday</div>
+            <div id="hourDay4">Friday</div>
+            <div id="hourDay5">Saturday</div>
+            <div id="hourDay6">Sunday</div>
+          </div>
+          <img
+            src="../assets/images/icon-dropdown.svg"
+            alt=""
+            id="dayDropdown"
+          />
+        </div>
       </div>
-   </div>
-</body>
+      <div id="hourContainer">
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon0" />
+          <div class="time" id="hourTime0"></div>
+          <div class="hourTemp" id="hourTemp0"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon1" />
+          <div class="time" id="hourTime1"></div>
+          <div class="hourTemp" id="hourTemp1"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon2" />
+          <div class="time" id="hourTime2"></div>
+          <div class="hourTemp" id="hourTemp2"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon3" />
+          <div class="time" id="hourTime3"></div>
+          <div class="hourTemp" id="hourTemp3"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon4" />
+          <div class="time" id="hourTime4"></div>
+          <div class="hourTemp" id="hourTemp4"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon5" />
+          <div class="time" id="hourTime5"></div>
+          <div class="hourTemp" id="hourTemp5"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon6" />
+          <div class="time" id="hourTime6"></div>
+          <div class="hourTemp" id="hourTemp6"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon7" />
+          <div class="time" id="hourTime7"></div>
+          <div class="hourTemp" id="hourTemp7"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon8" />
+          <div class="time" id="hourTime8"></div>
+          <div class="hourTemp" id="hourTemp8"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon9" />
+          <div class="time" id="hourTime9"></div>
+          <div class="hourTemp" id="hourTemp9"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon10" />
+          <div class="time" id="hourTime10"></div>
+          <div class="hourTemp" id="hourTemp10"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon11" />
+          <div class="time" id="hourTime11"></div>
+          <div class="hourTemp" id="hourTemp11"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon12" />
+          <div class="time" id="hourTime12"></div>
+          <div class="hourTemp" id="hourTemp12"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon13" />
+          <div class="time" id="hourTime13"></div>
+          <div class="hourTemp" id="hourTemp13"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon14" />
+          <div class="time" id="hourTime14"></div>
+          <div class="hourTemp" id="hourTemp14"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon15" />
+          <div class="time" id="hourTime15"></div>
+          <div class="hourTemp" id="hourTemp15"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon16" />
+          <div class="time" id="hourTime16"></div>
+          <div class="hourTemp" id="hourTemp16"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon17" />
+          <div class="time" id="hourTime17"></div>
+          <div class="hourTemp" id="hourTemp17"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon18" />
+          <div class="time" id="hourTime18"></div>
+          <div class="hourTemp" id="hourTemp18"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon19" />
+          <div class="time" id="hourTime19"></div>
+          <div class="hourTemp" id="hourTemp19"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon20" />
+          <div class="time" id="hourTime20"></div>
+          <div class="hourTemp" id="hourTemp20"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon21" />
+          <div class="time" id="hourTime21"></div>
+          <div class="hourTemp" id="hourTemp21"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon22" />
+          <div class="time" id="hourTime22"></div>
+          <div class="hourTemp" id="hourTemp22"></div>
+        </div>
+        <div class="hour">
+          <img src="#" alt="icon" class="hourIcon" id="hourIcon23" />
+          <div class="time" id="hourTime23"></div>
+          <div class="hourTemp" id="hourTemp23"></div>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
